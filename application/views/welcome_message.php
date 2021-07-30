@@ -74,12 +74,6 @@ defined('BASEPATH') or exit('No direct script access allowed');
 			border: 1px solid #D0D0D0;
 			box-shadow: 0 0 8px #D0D0D0;
 		}
-
-		.half_container {
-			display: inline-block;
-			width: 49%;
-			padding: 0 10px;
-		}
 	</style>
 </head>
 
@@ -614,9 +608,36 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 	<!-- PART 3 - CRUD FORM -->
 
+	<div class="container-fluid" style="width: 50%">
+		<h1 class="text-center">Add A User</h1>
+		<div class="container" style="width:80%">
+			<?php echo form_open('user/addUser') ?>
+			<div class="form-group">
+				<label>Username:<sup>*</sup></label>
+				<input type="text" name="username" class="form-control">
+			</div>
+			<div class="form-group">
+				<label>First Name:<sup>*</sup></label>
+				<input type="text" name="first_name" class="form-control">
+			</div>
+			<div class="form-group">
+				<label>Last Name:<sup>*</sup></label>
+				<input type="text" name="last_name" class="form-control">
+			</div>
+			<div class="form-group">
+				<label>Email Address:<sup>*</sup></label>
+				<input type="email" name="email_address" class="form-control">
+			</div>
+			<div class="form-group text-right" style=" margin-top: 5px; ">
+				<input type="submit" class="btn btn-primary" value="Submit">
+			</div>
+			<?php echo form_close() ?>
+		</div>
+	</div>
+
 	<div class="container-fluid">
 
-		<div class="half_container justify-content-evenly">
+		<div class="container-fluid">
 			<div class="container-fluid py-5 text-center">
 				<h1>Users</h1>
 			</div>
@@ -636,55 +657,22 @@ defined('BASEPATH') or exit('No direct script access allowed');
 							<td><?php echo $user->first_name; ?></td>
 							<td><?php echo $user->last_name; ?></td>
 							<td><?php echo $user->email_address; ?></td>
-							<td><a class="btn btn-outline-warning" href="edit_user.php?edit_id=<?php echo $user->id; ?>">Edit User</a></td>
-							<td><a class="deleteUserBTN btn btn-outline-danger" data-id="<?php echo $user->id; ?>" title="Add this item" href="#deleteUserModal">Delete User</a></td>
+							<td>
+								<?php echo form_open('user/editUser' . $user->id) ?>
+								<button type="submit" class="btn btn-outline-warning">Edit User</button>
+								<?php echo form_close() ?>
+							</td>
+							<td>
+								<?php echo form_open('user/deleteUser' . $user->id) ?>
+								<button type="submit" class="btn btn-outline-danger">Delete User</button>
+								<?php echo form_close() ?>
+							</td>
 						</tbody>
 					<?php } ?>
 				</table>
 			</div>
 		</div>
-
-		<div class="half_container justify-content-evenly">
-			<h1 class="text-center">Add A User</h1>
-			<div class="container" style="width:80%">
-				<?php #echo form_open('users/new-user') 
-				?>
-				<form action="<?php echo base_url() ?>new_user" method="post">
-					<div class="form-group">
-						<label>Username:<sup>*</sup></label>
-						<input type="text" name="username" class="form-control">
-					</div>
-					<div class="form-group">
-						<label>First Name:<sup>*</sup></label>
-						<input type="text" name="first_name" class="form-control">
-					</div>
-					<div class="form-group">
-						<label>Last Name:<sup>*</sup></label>
-						<input type="text" name="last_name" class="form-control">
-					</div>
-					<div class="form-group">
-						<label>Email Address:<sup>*</sup></label>
-						<input type="email" name="email" class="form-control">
-					</div>
-					<div class="form-group text-right" style=" margin-top: 5px; ">
-						<input type="submit" class="btn btn-primary" value="Submit">
-					</div>
-				</form>
-				<?php #echo form_close() 
-				?>
-			</div>
-		</div>
-
 	</div>
-
-	<script>
-		$(document).ready(function() {
-			$('#userTable').DataTable();
-		});
-	</script>
-
-
-
 </body>
 
 </html>
