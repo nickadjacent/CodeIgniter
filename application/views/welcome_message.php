@@ -7,10 +7,10 @@ defined('BASEPATH') or exit('No direct script access allowed');
 <head>
 	<meta charset="utf-8">
 	<title>Welcome to CodeIgniter</title>
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
 	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css" />
 	<script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
 	<script type="text/javascript" src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 	<style type="text/css">
 		::selection {
 			background-color: #E13300;
@@ -608,70 +608,68 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 	<!-- PART 3 - CRUD FORM -->
 
-	<div class="container-fluid" style="width: 50%">
-		<h1 class="text-center">Add A User</h1>
-		<div class="container" style="width:80%">
-			<?php echo form_open('user/addUser') ?>
-			<div class="form-group">
-				<label>Username:<sup>*</sup></label>
-				<input type="text" name="username" class="form-control">
-			</div>
-			<div class="form-group">
-				<label>First Name:<sup>*</sup></label>
-				<input type="text" name="first_name" class="form-control">
-			</div>
-			<div class="form-group">
-				<label>Last Name:<sup>*</sup></label>
-				<input type="text" name="last_name" class="form-control">
-			</div>
-			<div class="form-group">
-				<label>Email Address:<sup>*</sup></label>
-				<input type="email" name="email_address" class="form-control">
-			</div>
-			<div class="form-group text-right" style=" margin-top: 5px; ">
-				<input type="submit" class="btn btn-primary" value="Submit">
-			</div>
-			<?php echo form_close() ?>
-		</div>
-	</div>
-
-	<div class="container-fluid">
-
-		<div class="container-fluid">
-			<div class="container-fluid py-5 text-center">
+	<div class="d-flex justify-content-evenly">
+		<div class="text-center" style="width: 50%;">
+			<div>
 				<h1>Users</h1>
 			</div>
-			<div class="container">
-				<table id="userTable" class="display">
-					<thead>
-						<th class="text-center">Username</th>
-						<th class="text-center">First Name</th>
-						<th class="text-center">Last Name</th>
-						<th class="text-center">Email Address</th>
-						<th class="text-center"></th>
-						<th class="text-center"></th>
-					</thead>
-					<?php foreach ($users as $user) { ?>
-						<tbody>
-							<td><?php echo $user->username; ?></td>
-							<td><?php echo $user->first_name; ?></td>
-							<td><?php echo $user->last_name; ?></td>
-							<td><?php echo $user->email_address; ?></td>
-							<td>
-								<?php echo form_open('user/editUser/' . $user->id) ?>
-								<button type="submit" class="btn btn-outline-warning">Edit User</button>
-								<?php echo form_close() ?>
-							</td>
-							<td>
-								<?php echo form_open('user/deleteUser/' . $user->id)
-								?>
-								<button type="submit" class="btn btn-outline-danger">Delete User</button>
-								<?php echo form_close()
-								?>
-							</td>
-						</tbody>
-					<?php } ?>
-				</table>
+			<table id="userTable" class="display">
+				<thead>
+					<th>Username</th>
+					<th>First Name</th>
+					<th>Last Name</th>
+					<th>Email Address</th>
+					<th></th>
+					<th></th>
+				</thead>
+				<?php foreach ($users as $user) { ?>
+					<tbody>
+						<td><?php echo $user->username; ?></td>
+						<td><?php echo $user->first_name; ?></td>
+						<td><?php echo $user->last_name; ?></td>
+						<td><?php echo $user->email_address; ?></td>
+						<td>
+							<?php echo form_open('user/editUser/' . $user->id) ?>
+							<button type="submit" class="btn btn-outline-warning">Edit User</button>
+							<?php echo form_close() ?>
+						</td>
+						<td>
+							<?php echo form_open('user/deleteUser/' . $user->id)
+							?>
+							<button type="submit" class="btn btn-outline-danger">Delete User</button>
+							<?php echo form_close()
+							?>
+						</td>
+					</tbody>
+				<?php } ?>
+			</table>
+		</div>
+		<div style="width: 25%;">
+			<div>
+				<h1 class="text-center">Add A User</h1>
+			</div>
+			<div>
+				<?php echo form_open('user/addUser') ?>
+				<div class="form-group">
+					<label>Username:<sup>*</sup></label>
+					<input type="text" name="username" class="form-control">
+				</div>
+				<div class="form-group">
+					<label>First Name:<sup>*</sup></label>
+					<input type="text" name="first_name" class="form-control">
+				</div>
+				<div class="form-group">
+					<label>Last Name:<sup>*</sup></label>
+					<input type="text" name="last_name" class="form-control">
+				</div>
+				<div class="form-group">
+					<label>Email Address:<sup>*</sup></label>
+					<input type="email" name="email_address" class="form-control">
+				</div>
+				<div class="form-group" style=" margin-top: 5px; ">
+					<input type="submit" class="btn btn-primary" value="Submit">
+				</div>
+				<?php echo form_close() ?>
 			</div>
 		</div>
 	</div>
