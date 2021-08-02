@@ -663,9 +663,16 @@ defined('BASEPATH') or exit('No direct script access allowed');
 								<?php echo form_close() ?>
 							</td>
 							<td>
-								<?php echo form_open('user/deleteUser' . $user->id) ?>
+								<form method="DELETE" action="<?php echo base_url('user/delete/' . $user->id); ?>">
+									<button type="submit" class="btn btn-outline-danger">Delete</button>
+								</form>
+								<!--
+								<?php #echo form_open('user/deleteUser' . $user->id) 
+								?>
 								<button type="submit" class="btn btn-outline-danger">Delete User</button>
-								<?php echo form_close() ?>
+								<?php #echo form_close() 
+								?>
+					-->
 							</td>
 						</tbody>
 					<?php } ?>

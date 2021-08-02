@@ -53,4 +53,5 @@ $route['default_controller'] = 'user';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
-$route['itemCRUDEdit/(:any)'] = "user/edit/$1";
+$route['userModelEdit/(:any)'] = "user/edit/$1";
+$route['userDelete/(:any)']['delete'] = "user/delete/$1";
