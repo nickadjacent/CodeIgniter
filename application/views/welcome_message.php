@@ -642,7 +642,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 				<h1>Users</h1>
 			</div>
 			<div class="container">
-				<table id="userTable" class="table table-bordered table-hover text-center">
+				<table id="userTable" class="display">
 					<thead>
 						<th class="text-center">Username</th>
 						<th class="text-center">First Name</th>
@@ -675,6 +675,11 @@ defined('BASEPATH') or exit('No direct script access allowed');
 			</div>
 		</div>
 	</div>
+	<script>
+		$(document).ready(function() {
+			$('#userTable').DataTable();
+		});
+	</script>
 </body>
 
 </html>
