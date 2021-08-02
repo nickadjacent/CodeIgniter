@@ -40,9 +40,12 @@ class User extends CI_Controller
     public function editUser($id)
     {
 
-        $user = $this->user->findUser($id);
+        $user = $this->UserModel->findUser($id);
 
-        $this->load->view('editUser', array('user' => $user));
+        $data = array();
+        $data['user'] = $user;
+
+        $this->load->view('editUser', $data);
     }
 
     public function updateUser($id)
@@ -55,13 +58,14 @@ class User extends CI_Controller
         );
 
         $this->UserModel->updateUser($id, $data);
+
+        redirect(base_url());
     }
 
     public function deleteUser($id)
     {
-        $userID = $id;
 
-        $this->UserModel->deleteUser($userID);
+        $this->UserModel->deleteUser($id);
 
         redirect(base_url());
     }
