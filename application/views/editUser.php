@@ -31,8 +31,16 @@
                 <label>Email Address:<sup>*</sup></label>
                 <input type="email" name="email_address" class="form-control" value="<?php echo $user->email_address ?>">
             </div>
-            <div class="form-group text-right" style=" margin-top: 5px; ">
-                <input type="submit" class="btn btn-primary" value="Submit">
+            <div class="d-flex justify-content-between">
+                <div class="form-group text-right d-inline-block" style=" margin-top: 5px; ">
+                    <a href="http://localhost/codeigniter3/" class="btn btn-danger">Cancel</a>
+                </div>
+                <div class="form-group text-right d-inline-block" style=" margin-top: 5px; ">
+                    <input type="reset" class="btn btn-warning" value="Reset">
+                </div>
+                <div class="form-group text-right d-inline-block" style=" margin-top: 5px; ">
+                    <input type="submit" class="btn btn-primary" value="Submit">
+                </div>
             </div>
             <?php echo form_close() ?>
         </div>

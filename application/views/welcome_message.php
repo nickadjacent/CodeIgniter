@@ -110,7 +110,6 @@ defined('BASEPATH') or exit('No direct script access allowed');
 	<br>
 
 	<!-- PART 2 - DataTable Integration -->
-	<!-- The main trouble I had with this section was understanding the directions. I read the documentation from CodeIgniter and DataTable website. Once I realized it was basically a jQuery library, I understood that I just needed to include the CDN and call the function. -->
 
 	<table id="myTable" class="display" style="width:100%">
 		<thead>
